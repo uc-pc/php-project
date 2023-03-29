@@ -11,7 +11,7 @@
     <script src="https://kit.fontawesome.com/a98ee9cbe5.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="style.css">
     <title>PHP Project</title>
 </head>
 <body>
