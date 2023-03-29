@@ -20,9 +20,9 @@ $question_id = $_GET['question_id'];
     <h5 class="border-bottom pb-2 pt-2">Explanation : </h5>
     <div class="explanation" ></div>
 </div>
-<!-- side panel-->
-<div id="local-navbar" class="local-navbar card card-body bg-light" style="overflow-y: scroll;">
-    <h2 class="text-center pb-2" style="font-family: 'Pacifico', cursive;">Question side panel</h2>
+<!-- side panel -->
+<div id="local-navbar" class="local-navbar card card-body bg-light" style="overflow:scroll;">
+    <div id="local-navbar"></div>
 </div>
  <!-- Footer -->
  <div class="fixed-bottom py-2 ml-auto d-flex justify-content-center" style="z-index: 10; bottom: 10px; width:650px;background-color:#c7c7c7;border-radius:25px">
@@ -33,6 +33,7 @@ $question_id = $_GET['question_id'];
     <a href="result.php?time=<?php echo $date ?>" class="btn-danger btn mx-3 px-4"> Result Page</a>
 </div>
 <script>
+    
     // Hide side list when click outside
     window.addEventListener('click', function(e){   
         let _opened = $('#local-navbar').hasClass('show');
@@ -66,7 +67,7 @@ $question_id = $_GET['question_id'];
             }
 
         // Side panel fetch
-        let listdata = ``;
+        let listdata = '<h2 class="text-center pb-2 panel">Question side panel</h2><div class="d-flex justify-content-center"><span class="font-weight-bold attempt p-2"></span><span class="font-weight-bold unattempt p-2"></span></div>';
         for (let i = 0; i < data.length; i++) {
             let sideQuestion = data[i].snippet;
             if(i==jsindex)
@@ -78,6 +79,14 @@ $question_id = $_GET['question_id'];
             }
         }
         $('#local-navbar').append(listdata);
+        var resultdata = JSON.parse(sessionStorage.getItem("resultdata"));
+        var attempt =resultdata[1]
+        var unattempt =resultdata[0] - resultdata[1]
+        console.log(resultdata)
+        let attemp = `<span class="font-weight-bold"><i class="fa-solid fa-eye"></i></i> ${attempt} Attempted</span>`;
+        $('.attempt').html(attemp);
+        let unattemp = `<span class="font-weight-bold"><i class="fa-solid fa-eye-slash"></i></i> ${unattempt} Unattempted</span>`;
+        $('.unattempt').html(unattemp);
         // Fetch questions and answers
         var questionAnswers = JSON.parse(data[jsindex].content_text);
         $('.question').text(jsindex+1+") "+questionAnswers.question);

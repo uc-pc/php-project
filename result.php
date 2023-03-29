@@ -1,29 +1,7 @@
 <?php 
 include ('header.php');
 $date = $_GET['time'];
-
-// if (isset($_GET['redirect']) && $_GET['redirect'] == 'true') {
-//     header('Location: index.php');
-//     exit;
-// }
-
 ?>
-
-<script>
-if (sessionStorage.getItem('submitted')) {
-  history.pushState(null, null, location.href);
-  window.onpopstate = function() {
-    sessionStorage.removeItem('submitted');
-    location.href = 'index.php';
-  };
-}
-</script>
-
-
-
-<!-- <script>
-    window.history.pushState({}, '', '');
-</script> -->
 <body>
 <!-- Head Content -->
 <div class="p-2 text-center">
@@ -60,12 +38,16 @@ if (sessionStorage.getItem('submitted')) {
         }
     })
     // Calculations
+
     $(".correctcount").append(correct.length);
     let result = (correct.length * 100) / 11;
     $(".result").append(result.toFixed(2) + "%");
     $(".incorrectcount").append((resultdata[1]) - correct.length);
     $(".items").append(resultdata[0]);
     $(".unattempt").append(resultdata[0] - resultdata[1]);
+
+    // sessionStorage.setItem("attempt", "Smith");
+
     // Fetch file
     $.getJSON('question.json', function(data) {
         let tabledata = ``;
@@ -135,11 +117,4 @@ if (sessionStorage.getItem('submitted')) {
     });
 </script>
 </body>
-<!-- <script>
-  window.addEventListener('pageshow', function(event) {
-    if (event.persisted) {
-      window.location.replace("first.php");
-    }
-  });
-</script> -->
 </html>
