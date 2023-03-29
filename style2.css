@@ -50,7 +50,7 @@
     width: 475px;
     font-size: 15px;
     position: absolute;
-    overflow: scroll;
+    /* overflow-y: scroll; */
     z-index: 99;
     top: 0;
     height: 100vh;
@@ -69,5 +69,38 @@
     color: gray;
     text-decoration: none;
   }
-
-  
+  .statusBox{
+    border-radius: 40px;
+    padding: 10px;
+  }
+  .new-class{
+    color: blue;
+}
+.slideLink{
+    color: black;
+}
+.statusBox{
+    border-radius: 40px;
+    padding: 1px 5px;
+    text-align: center;
+    /* border: 1px solid black; */
+    font-size: 12px;
+    font-weight: bold;
+  }
+    .unattempted{
+        color: orange;
+        font-weight: normal;
+        border: 1px solid orange;
+  }
+  seq:before {
+    content: attr(no);
+}
+.ans_option{
+    font-size: 15px;
+}
+.explanation{
+    font-size: 15px;
+}
+.question{
+    font-weight: 500;
+}
